@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamer Sky Theme</title>
+  <style>
+    :root {
+      --bg-color: #3b82c4;
+      --text-color: #fff;
+      --card-bg: rgba(255, 255, 255, 0.15);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: url('https://cur.cursors-4u.net/games/gam-10/gam956.cur'), auto !important;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      scroll-behavior: smooth;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      color: #fff;
+      padding: 10px 20px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1.2s;
+    }
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+      pointer-events: none;
+    }
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+      width: 100%;
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 0 10px #fff;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+      animation-delay: 1.5s;
+    }
+    h1 {
+      font-size: 2.2em;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1.7s;
+    }
+    .social-links {
+      margin: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .social-links a {
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .social-links a:nth-child(1) { animation-delay: 1.9s; }
+    .social-links a:nth-child(2) { animation-delay: 2.1s; }
+    .social-links a:nth-child(3) { animation-delay: 2.3s; }
+    .social-links a:nth-child(4) { animation-delay: 2.5s; }
+    .social-links a:nth-child(5) { animation-delay: 2.7s; }
+    .about {
+      background: var(--card-bg);
+      padding: 40px 20px 60px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards 2.9s;
+      max-width: 100%;
+    }
+    .about h2 {
+      color: var(--text-color);
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      text-shadow: 0 0 6px #fff;
+    }
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+    footer {
+      margin-top: auto;
+      padding: 10px 20px;
+      color: var(--text-color);
+      font-size: 0.7em;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s forwards 3.2s;
+    }
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 2s;
+    }
+    .welcome-text {
+      font-size: 3em;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      text-shadow: 0 0 10px #fff;
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 1.5em; }
+      .avatar { width: 120px; height: 120px; }
+      .social-links a { padding: 10px 20px; font-size: 0.95em; }
+      .theme-toggle { padding: 6px 12px; font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <h1 class="welcome-text">Welcome</h1>
+  </div>
+
+  <div id="main-content" style="display:none;">
+    <button class="theme-toggle" onclick="toggleTheme()">Ganti Tema</button>
+
+    <header>
+      <img src="avatar.png" alt="Avatar Gamer" class="avatar"/>
+      <h1>Random Contant | Donate 👇</h1>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@#" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/#" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@#" target="_blank">YouTube</a>
+        <a href="https://www.saweria.co/kamu" target="_blank">💖 Donate</a>
+        <a href="roblox.html">🎮 Roblox Game</a>
+      </div>
+    </header>
+
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        Halo! Aku seorang streamer yang suka berbagi momen seru di dunia game. Dari FPS hingga game santai,
+        tujuanku adalah membawa hiburan dan komunitas yang menyenangkan untuk semua. Yuk follow dan dukung channel-ku!
+      </p>
+    </section>
+
+    <footer>
+      &copy; Website.Mhmdfadilah
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      }, 3000);
+    });
+
+    // Bubble efek
+    const bubbleCount = 40;
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      const size = Math.random() * 8 + 4;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.animationDuration = `${5 + Math.random() * 5}s`;
+      bubble.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(bubble);
+    }
+
+    // Toggle tema
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const root = document.documentElement;
+      if (document.body.classList.contains('dark-mode')) {
+        root.style.setProperty('--bg-color', '#111');
+        root.style.setProperty('--text-color', '#eee');
+        root.style.setProperty('--card-bg', 'rgba(255, 255, 255, 0.08)');
+      } else {
+        root.style.setProperty('--bg-color', '#3b82c4');
+        root.style.setProperty('--text-color', '#fff');
+        root.style.setProperty('--card-bg', 'rgba(255, 255, 255, 0.15)');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Roblox</title>
+  <style>
+    :root {
+      --bg-color: #3b82c4;
+      --text-color: #fff;
+      --card-bg: rgba(255, 255, 255, 0.15);
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --card-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: url('https://cur.cursors-4u.net/games/gam-10/gam956.cur'), auto !important;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .top-buttons {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .theme-toggle, .home-button {
+      background: transparent;
+      color: #fff;
+      padding: 8px 18px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px #fff;
+      font-size: 0.9em;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .theme-toggle { animation-delay: 0.2s; }
+    .home-button { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 20px;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    .play-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .about {
+      background: var(--card-bg);
+      padding: 40px 20px 60px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards;
+      animation-delay: 1.3s;
+    }
+
+    .about h2 {
+      color: var(--text-color);
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      text-shadow: 0 0 6px #fff;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 10px 20px;
+      color: var(--text-color);
+      font-size: 0.7em;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s forwards;
+      animation-delay: 1.6s;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: rise linear infinite;
+      z-index: 0;
+    }
+
+    #bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .welcome-text {
+      font-size: 3em;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.5em; }
+      .avatar { width: 120px; height: 120px; }
+      .play-button { padding: 12px 20px; font-size: 0.95em; }
+      .theme-toggle, .home-button { padding: 6px 12px; font-size: 0.85em; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <h1 class="welcome-text">Game Roblox</h1>
+  </div>
+
+  <div id="main-content" style="display:none;">
+    <!-- Tombol tengah atas -->
+    <div class="top-buttons">
+      <button class="theme-toggle" onclick="toggleTheme()">Ganti Tema</button>
+      <a href="index.html" class="home-button">Home</a>
+    </div>
+
+    <!-- Bubble -->
+    <div id="bubbles"></div>
+
+    <!-- Konten -->
+    <header>
+      <img src="avatar.png" alt="Avatar Game" class="avatar"/>
+      <h1>Mainkan Game Roblox Buatan Saya</h1>
+      <a class="play-button" href="https://www.roblox.com/users/00000000/profile" target="_blank">Tower Slap</a>
+    </header>
+
+    <section class="about">
+      <h2>Info Game</h2>
+      <p>
+        Game ini dibuat oleh komunitas. Kamu bisa menjelajahi dunia virtual, menyelesaikan misi, atau sekadar bersenang-senang bersama teman. Bergabung sekarang dan tunjukkan skill kamu di dunia Roblox!
+      </p>
+    </section>
+
+    <footer>
+      &copy; Website.Mhmdfadilah
+    </footer>
+  </div>
+
+  <script>
+    // Splash screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      }, 3000);
+
+      // Bubbles
+      const container = document.getElementById('bubbles');
+      for (let i = 0; i < 40; i++) {
+        const b = document.createElement('div');
+        b.classList.add('bubble');
+        const size = Math.random() * 12 + 6;
+        b.style.width = `${size}px`;
+        b.style.height = `${size}px`;
+        b.style.left = `${Math.random() * 100}%`;
+        b.style.animationDuration = `${4 + Math.random() * 6}s`;
+        b.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(b);
+      }
+    });
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+</html>
