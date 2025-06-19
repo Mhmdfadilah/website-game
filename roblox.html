@@ -62,6 +62,36 @@
     .theme-toggle { animation-delay: 0.2s; }
     .home-button { animation-delay: 0.4s; }
 
+    .play-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .button-clicked {
+      background-color: white !important;
+      color: black !important;
+      border-color: white !important;
+      transition: all 0.3s ease;
+    }
+
+    button:focus,
+    a:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -98,23 +128,6 @@
       animation-delay: 0.8s;
     }
 
-    .play-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      border-radius: 30px;
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 10px #fff;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-      animation-delay: 1s;
-    }
-
     .about {
       background: var(--card-bg);
       padding: 40px 20px 60px;
@@ -124,8 +137,6 @@
       animation: fadeUp 1s forwards;
       animation-delay: 1.3s;
       position: relative;
-
-      /* Tambahan efek visual */
       border-radius: 20px;
       box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
       transition: all 0.4s ease;
@@ -219,10 +230,24 @@
     }
 
     .welcome-text {
-      font-size: 3em;
+      font-size: 1.8em;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .letter {
+      display: inline-block;
       opacity: 0;
-      animation: fadeUp 1s ease forwards;
-      text-shadow: 0 0 10px #fff;
+      transform: translateY(20px);
+      animation: fadeLetter 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeLetter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeOut {
@@ -235,11 +260,30 @@
       .play-button { padding: 12px 20px; font-size: 0.95em; }
       .theme-toggle, .home-button { padding: 6px 12px; font-size: 0.85em; }
     }
+
+    body, * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
   <div id="splash">
-    <h1 class="welcome-text">Game Roblox</h1>
+    <h1 class="welcome-text">
+      <span class="letter" style="animation-delay: 0s;">G</span>
+      <span class="letter" style="animation-delay: 0.1s;">A</span>
+      <span class="letter" style="animation-delay: 0.2s;">M</span>
+      <span class="letter" style="animation-delay: 0.3s;">E</span>
+      <span class="letter" style="animation-delay: 0.4s;"> </span>
+      <span class="letter" style="animation-delay: 0.5s;">R</span>
+      <span class="letter" style="animation-delay: 0.6s;">O</span>
+      <span class="letter" style="animation-delay: 0.7s;">B</span>
+      <span class="letter" style="animation-delay: 0.8s;">L</span>
+      <span class="letter" style="animation-delay: 0.9s;">O</span>
+      <span class="letter" style="animation-delay: 1s;">X</span>
+    </h1>
   </div>
 
   <div id="main-content" style="display:none;">
@@ -299,6 +343,28 @@
       aboutText.classList.toggle('hidden');
       button.classList.toggle('rotated');
     }
+
+    document.querySelectorAll("button, .home-button, .play-button").forEach(btn => {
+      btn.addEventListener("click", function () {
+        btn.classList.add("button-clicked");
+        setTimeout(() => {
+          btn.classList.remove("button-clicked");
+        }, 200);
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      const key = e.key.toLowerCase();
+      if ((e.ctrlKey && ['u', 'c', 's', 'a', 'x'].includes(key)) || e.key === 'F12') {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
