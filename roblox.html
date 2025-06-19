@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Game Roblox</title>
   <style>
     :root {
@@ -32,6 +32,7 @@
       color: var(--text-color);
       overflow-x: hidden;
       scroll-behavior: smooth;
+      touch-action: manipulation;
     }
 
     .top-buttons {
@@ -352,9 +353,8 @@
         }, 200);
       });
     });
-  </script>
 
-  <script>
+    // Anti salin
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
@@ -365,6 +365,11 @@
         e.preventDefault();
       }
     });
+
+    // Anti zoom gesture (iOS & mobile)
+    document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+    document.addEventListener('gesturechange', function (e) { e.preventDefault(); });
+    document.addEventListener('gestureend', function (e) { e.preventDefault(); });
   </script>
 </body>
 </html>
