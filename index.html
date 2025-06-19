@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gamer Sky Theme</title>
+  <title>MediaSosial|Saweria</title>
   <style>
     :root {
       --bg-color: #3b82c4;
@@ -45,7 +45,7 @@
       box-shadow: 0 0 10px #fff;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
-      animation-delay: 1.2s;
+      animation-delay: 0.5s;
     }
     .bubble {
       position: absolute;
@@ -63,13 +63,13 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
     header {
       text-align: center;
       padding: 60px 20px 20px;
       width: 100%;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.8s;
     }
     .avatar {
       width: 150px;
@@ -78,9 +78,9 @@
       border: 2px solid #fff;
       object-fit: cover;
       box-shadow: 0 0 10px #fff;
-      animation: fadeUp 0.8s ease forwards;
       opacity: 0;
-      animation-delay: 1.5s;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1s;
     }
     h1 {
       font-size: 2.2em;
@@ -88,7 +88,7 @@
       text-shadow: 0 0 10px #fff;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
-      animation-delay: 1.7s;
+      animation-delay: 1.2s;
     }
     .social-links {
       margin: 30px 0;
@@ -109,11 +109,11 @@
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
     }
-    .social-links a:nth-child(1) { animation-delay: 1.9s; }
-    .social-links a:nth-child(2) { animation-delay: 2.1s; }
-    .social-links a:nth-child(3) { animation-delay: 2.3s; }
-    .social-links a:nth-child(4) { animation-delay: 2.5s; }
-    .social-links a:nth-child(5) { animation-delay: 2.7s; }
+    .social-links a:nth-child(1) { animation-delay: 1.4s; }
+    .social-links a:nth-child(2) { animation-delay: 1.6s; }
+    .social-links a:nth-child(3) { animation-delay: 1.8s; }
+    .social-links a:nth-child(4) { animation-delay: 2s; }
+    .social-links a:nth-child(5) { animation-delay: 2.2s; }
 
     .about {
       background: var(--card-bg);
@@ -121,11 +121,9 @@
       text-align: center;
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeUp 1s forwards 2.9s;
+      animation: fadeUp 1s forwards 2.4s;
       max-width: 100%;
       position: relative;
-
-      /* Tambahan efek */
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
@@ -172,26 +170,7 @@
       font-size: 0.7em;
       text-align: center;
       opacity: 0;
-      animation: fadeUp 1s forwards 3.2s;
-    }
-    #splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2s;
-    }
-    .welcome-text {
-      font-size: 3em;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-      text-shadow: 0 0 10px #fff;
+      animation: fadeUp 1s forwards 2.7s;
     }
     @media (max-width: 768px) {
       h1 { font-size: 1.5em; }
@@ -202,22 +181,18 @@
   </style>
 </head>
 <body>
-  <div id="splash">
-    <h1 class="welcome-text">Welcome</h1>
-  </div>
-
-  <div id="main-content" style="display:none;">
+  <div id="main-content">
     <button class="theme-toggle" onclick="toggleTheme()">Ganti Tema</button>
 
     <header>
       <img src="avatar.png" alt="Avatar Gamer" class="avatar"/>
-      <h1>Random Content | Donate 👇</h1>
+      <h1>Media Sosial | Saweria 👇</h1>
       <div class="social-links">
         <a href="https://www.tiktok.com/@#" target="_blank">TikTok</a>
         <a href="https://www.instagram.com/#" target="_blank">Instagram</a>
         <a href="https://www.youtube.com/@#" target="_blank">YouTube</a>
-        <a href="https://www.saweria.co/kamu" target="_blank">💖 Donate</a>
-        <a href="roblox.html">🎮 Roblox Game</a>
+        <a href="https://www.saweria.co/kamu" target="_blank">Saweria</a>
+        <a href="roblox.html">Game Roblox</a>
       </div>
     </header>
 
@@ -241,27 +216,9 @@
 
   <script>
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('splash').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-      }, 3000);
+      aktifkanAntiSalin();
     });
 
-    // Bubble efek
-    const bubbleCount = 40;
-    for (let i = 0; i < bubbleCount; i++) {
-      const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      const size = Math.random() * 8 + 4;
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${Math.random() * 100}%`;
-      bubble.style.animationDuration = `${5 + Math.random() * 5}s`;
-      bubble.style.animationDelay = `${Math.random() * 5}s`;
-      document.body.appendChild(bubble);
-    }
-
-    // Toggle tema
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
       const root = document.documentElement;
@@ -276,7 +233,6 @@
       }
     }
 
-    // Toggle About
     function toggleAbout() {
       const text = document.getElementById('about-text');
       const arrow = document.getElementById('arrow');
@@ -289,6 +245,29 @@
         arrow.textContent = '▲';
         arrow.style.transform = 'rotate(180deg)';
       }
+    }
+
+    function aktifkanAntiSalin() {
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
+          e.preventDefault();
+          alert("Menyalin teks tidak diizinkan.");
+        }
+      });
+
+      document.addEventListener('copy', function (e) {
+        e.preventDefault();
+        alert("Menyalin teks tidak diizinkan.");
+      });
+
+      document.body.style.userSelect = "none";
+      document.body.style.webkitUserSelect = "none";
+      document.body.style.msUserSelect = "none";
+      document.body.style.mozUserSelect = "none";
     }
   </script>
 </body>
